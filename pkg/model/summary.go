@@ -16,26 +16,14 @@ type Summary struct {
 	skipped atomic.Int32
 }
 
-func (s *Summary) IncPassed() {
-	s.passed.Add(1)
-}
+func (s *Summary) IncPassed() { _ = "STUB: not implemented"; return }
 
-func (s *Summary) IncFailed() {
-	s.failed.Add(1)
-}
+func (s *Summary) IncFailed() { _ = "STUB: not implemented"; return }
 
-func (s *Summary) IncSkipped() {
-	s.skipped.Add(1)
-}
+func (s *Summary) IncSkipped() { _ = "STUB: not implemented"; return }
 
-func (s *Summary) Passed() int32 {
-	return s.passed.Load()
-}
+func (s *Summary) Passed() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (s *Summary) Failed() int32 {
-	return s.failed.Load()
-}
+func (s *Summary) Failed() int32 { _ = "STUB: not implemented"; return 0 }
 
-func (s *Summary) Skipped() int32 {
-	return s.skipped.Load()
-}
+func (s *Summary) Skipped() int32 { _ = "STUB: not implemented"; return 0 }

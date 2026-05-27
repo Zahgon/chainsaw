@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/kyverno/chainsaw/pkg/apis/v1alpha1"
-	opsleep "github.com/kyverno/chainsaw/pkg/engine/operations/sleep"
 	"github.com/kyverno/chainsaw/pkg/engine/outputs"
 	enginecontext "github.com/kyverno/chainsaw/pkg/runner/context"
 )
@@ -15,12 +14,8 @@ type sleepAction struct {
 }
 
 func (o sleepAction) Execute(ctx context.Context, tc enginecontext.TestContext) (outputs.Outputs, error) {
-	op := opsleep.New(o.duration)
-	return op.Exec(ctx, tc.Bindings())
+	_ = "STUB: not implemented"
+	return *new(outputs.Outputs), nil
 }
 
-func sleepOperation(op v1alpha1.Sleep) Operation {
-	return sleepAction{
-		duration: op.Duration.Duration,
-	}
-}
+func sleepOperation(op v1alpha1.Sleep) Operation { _ = "STUB: not implemented"; return *new(Operation) }

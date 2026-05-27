@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"sync"
 	"time"
 )
@@ -29,13 +28,7 @@ type Report struct {
 	lock      sync.Mutex
 }
 
-func (r *Report) Add(report *TestReport) {
-	if report != nil {
-		r.lock.Lock()
-		defer r.lock.Unlock()
-		r.Tests = append(r.Tests, report)
-	}
-}
+func (r *Report) Add(report *TestReport) { _ = "STUB: not implemented"; return }
 
 type TestReport struct {
 	BasePath   string
@@ -48,14 +41,7 @@ type TestReport struct {
 	Steps      []*StepReport
 }
 
-func (r *TestReport) Add(report *StepReport) {
-	if report != nil {
-		if report.Name == "" {
-			report.Name = fmt.Sprintf("step %d", len(r.Steps)+1)
-		}
-		r.Steps = append(r.Steps, report)
-	}
-}
+func (r *TestReport) Add(report *StepReport) { _ = "STUB: not implemented"; return }
 
 type StepReport struct {
 	Name       string
@@ -64,32 +50,11 @@ type StepReport struct {
 	Operations []*OperationReport
 }
 
-func (r *StepReport) Add(report *OperationReport) {
-	if report != nil {
-		if report.Name == "" {
-			report.Name = fmt.Sprintf("operation %d", len(r.Operations)+1)
-		}
-		r.Operations = append(r.Operations, report)
-	}
-}
+func (r *StepReport) Add(report *OperationReport) { _ = "STUB: not implemented"; return }
 
-func (r *StepReport) Failed() bool {
-	for _, operation := range r.Operations {
-		if operation.Err != nil {
-			return true
-		}
-	}
-	return false
-}
+func (r *StepReport) Failed() bool { _ = "STUB: not implemented"; return false }
 
-func (r *TestReport) Failed() bool {
-	for _, step := range r.Steps {
-		if step.Failed() {
-			return true
-		}
-	}
-	return false
-}
+func (r *TestReport) Failed() bool { _ = "STUB: not implemented"; return false }
 
 type OperationReport struct {
 	Name      string

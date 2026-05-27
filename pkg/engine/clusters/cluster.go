@@ -1,11 +1,7 @@
 package clusters
 
 import (
-	"sync"
-
-	restutils "github.com/kyverno/chainsaw/pkg/utils/rest"
 	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/clientcmd"
 )
 
 type Cluster interface {
@@ -17,30 +13,19 @@ type fromConfig struct {
 }
 
 func NewClusterFromConfig(config *rest.Config) Cluster {
-	return &fromConfig{
-		config: config,
-	}
+	_ = "STUB: not implemented"
+	return *new(Cluster)
 }
 
-func (c *fromConfig) Config() (*rest.Config, error) {
-	return c.config, nil
-}
+func (c *fromConfig) Config() (*rest.Config, error) { _ = "STUB: not implemented"; return nil, nil }
 
 type fromKubeconfig struct {
 	resolver func() (*rest.Config, error)
 }
 
 func NewClusterFromKubeconfig(kubeconfig string, context string) Cluster {
-	resolver := sync.OnceValues(func() (*rest.Config, error) {
-		return restutils.Config(kubeconfig, clientcmd.ConfigOverrides{
-			CurrentContext: context,
-		})
-	})
-	return &fromKubeconfig{
-		resolver: resolver,
-	}
+	_ = "STUB: not implemented"
+	return *new(Cluster)
 }
 
-func (c *fromKubeconfig) Config() (*rest.Config, error) {
-	return c.resolver()
-}
+func (c *fromKubeconfig) Config() (*rest.Config, error) { _ = "STUB: not implemented"; return nil, nil }

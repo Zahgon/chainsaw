@@ -40,7 +40,8 @@ var SchemeGroupVersion = schema.GroupVersion{Group: GroupName, Version: "v1alpha
 
 // Resource takes an unqualified resource and returns a Group qualified GroupResource
 func Resource(resource string) schema.GroupResource {
-	return SchemeGroupVersion.WithResource(resource).GroupResource()
+	_ = "STUB: not implemented"
+	return *new(schema.GroupResource)
 }
 
 var (
@@ -60,13 +61,6 @@ func init() {
 }
 
 // Adds the list of known types to Scheme.
-func addKnownTypes(scheme *runtime.Scheme) error {
-	scheme.AddKnownTypes(SchemeGroupVersion,
-		&Configuration{},
-		&StepTemplate{},
-		&Test{},
-	)
-	// AddToGroupVersion allows the serialization of client types like ListOptions.
-	v1.AddToGroupVersion(scheme, SchemeGroupVersion)
-	return nil
-}
+func addKnownTypes(scheme *runtime.Scheme) error { _ = "STUB: not implemented"; return nil }
+
+// AddToGroupVersion allows the serialization of client types like ListOptions.

@@ -11,6 +11,6 @@ type FakeLoader struct {
 }
 
 func (f *FakeLoader) Load(data []byte) (schema.GroupVersionKind, unstructured.Unstructured, error) {
-	defer func() { f.numCalls++ }()
-	return f.LoadFn(f.numCalls, data)
+	_ = "STUB: not implemented"
+	return *new(schema.GroupVersionKind), *new(unstructured.Unstructured), nil
 }

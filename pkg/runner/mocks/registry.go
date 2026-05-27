@@ -11,13 +11,16 @@ type Registry struct {
 }
 
 func (r Registry) Register(string, clusters.Cluster) clusters.Registry {
-	return r
+	_ = "STUB: not implemented"
+	return *new(clusters.Registry)
 }
 
 func (r Registry) Lookup(string) clusters.Cluster {
-	return nil
+	_ = "STUB: not implemented"
+	return *new(clusters.Cluster)
 }
 
 func (r Registry) Build(clusters.Cluster) (*rest.Config, client.Client, error) {
-	return nil, r.Client, nil
+	_ = "STUB: not implemented"
+	return nil, *new(client.Client), nil
 }

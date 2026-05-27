@@ -17,41 +17,48 @@ type dryRunClient struct {
 }
 
 func (c *dryRunClient) Create(ctx context.Context, obj client.Object, opts ...client.CreateOption) error {
-	return c.inner.Create(ctx, obj, append(opts, ctrlclient.DryRunAll)...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *dryRunClient) Update(ctx context.Context, obj client.Object, opts ...client.UpdateOption) error {
-	return c.inner.Update(ctx, obj, append(opts, ctrlclient.DryRunAll)...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *dryRunClient) Delete(ctx context.Context, obj client.Object, opts ...client.DeleteOption) error {
-	return c.inner.Delete(ctx, obj, append(opts, ctrlclient.DryRunAll)...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *dryRunClient) Get(ctx context.Context, key types.NamespacedName, obj client.Object, opts ...client.GetOption) error {
-	return c.inner.Get(ctx, key, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *dryRunClient) IsObjectNamespaced(obj runtime.Object) (bool, error) {
-	return c.inner.IsObjectNamespaced(obj)
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (c *dryRunClient) List(ctx context.Context, list client.ObjectList, opts ...client.ListOption) error {
-	return c.inner.List(ctx, list, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *dryRunClient) Patch(ctx context.Context, obj client.Object, patch client.Patch, opts ...client.PatchOption) error {
-	return c.inner.Patch(ctx, obj, patch, append(opts, ctrlclient.DryRunAll)...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *dryRunClient) RESTMapper() meta.RESTMapper {
-	return c.inner.RESTMapper()
+	_ = "STUB: not implemented"
+	return *new(meta.RESTMapper)
 }
 
 func (c *dryRunClient) SubResource(subResource string) ctrlclient.SubResourceClient {
-	return c.inner.SubResource(subResource)
+	_ = "STUB: not implemented"
+	return *new(ctrlclient.SubResourceClient)
 }
 
-func New(inner Client) Client {
-	return &dryRunClient{inner: inner}
-}
+func New(inner Client) Client { _ = "STUB: not implemented"; return *new(Client) }

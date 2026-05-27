@@ -2,13 +2,9 @@ package v1alpha1
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"regexp"
 
-	"github.com/jmespath-community/go-jmespath/pkg/parsing"
 	"github.com/kyverno/chainsaw/pkg/apis"
-	"github.com/kyverno/chainsaw/pkg/expressions"
 	"github.com/kyverno/kyverno-json/pkg/apis/policy/v1alpha1"
 	"github.com/kyverno/kyverno-json/pkg/core/compilers"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -43,12 +39,7 @@ type Binding struct {
 	Value Projection `json:"value"`
 }
 
-func (b Binding) CheckName() error {
-	if !identifier.MatchString(string(b.Name)) {
-		return fmt.Errorf("invalid name %s", b.Name)
-	}
-	return nil
-}
+func (b Binding) CheckName() error { _ = "STUB: not implemented"; return nil }
 
 // Check represents a check to be applied on the result of an operation.
 type Check = v1alpha1.AssertionTree
@@ -80,36 +71,13 @@ type Expectation struct {
 // Expression defines an expression to be used in string fields.
 type Expression string
 
-func (e *Expression) MarshalJSON() ([]byte, error) {
-	if e == nil {
-		return nil, nil
-	}
-	return json.Marshal(string(*e))
-}
+func (e *Expression) MarshalJSON() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (e *Expression) UnmarshalJSON(data []byte) error {
-	var statement string
-	err := json.Unmarshal(data, &statement)
-	if err != nil {
-		return err
-	}
-	*e = Expression(statement)
-	expression := expressions.Parse(context.TODO(), statement)
-	if expression == nil {
-		return nil
-	}
-	if expression.Engine == "" {
-		return nil
-	}
-	parser := parsing.NewParser()
-	if _, err := parser.Parse(statement); err != nil {
-		return err
-	}
-	return nil
-}
+func (e *Expression) UnmarshalJSON(data []byte) error { _ = "STUB: not implemented"; return nil }
 
 func (e Expression) Value(ctx context.Context, compilers compilers.Compilers, bindings apis.Bindings) (string, error) {
-	return expressions.String(ctx, compilers, string(e), bindings)
+	_ = "STUB: not implemented"
+	return "", nil
 }
 
 // Format determines the output format (json or yaml).

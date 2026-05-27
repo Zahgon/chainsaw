@@ -15,67 +15,51 @@ type TestDeps struct {
 }
 
 func (d *TestDeps) MatchString(pat, str string) (bool, error) {
-	if d.Test {
-		return true, nil
-	}
-	if d.matchRe == nil || d.matchPat != pat {
-		d.matchPat = pat
-		matchRe, err := regexp.Compile(d.matchPat)
-		if err != nil {
-			return false, err
-		}
-		d.matchRe = matchRe
-	}
-	return d.matchRe.MatchString(str), nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
-func (*TestDeps) SetPanicOnExit0(bool) {}
+func (*TestDeps) SetPanicOnExit0(bool) { _ = "STUB: not implemented"; return }
 
-func (*TestDeps) StartCPUProfile(w io.Writer) error {
-	return nil
-}
+func (*TestDeps) StartCPUProfile(w io.Writer) error { _ = "STUB: not implemented"; return nil }
 
-func (*TestDeps) StopCPUProfile() {
-}
+func (*TestDeps) StopCPUProfile() { _ = "STUB: not implemented"; return }
 
 func (*TestDeps) WriteProfileTo(name string, w io.Writer, debug int) error {
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (*TestDeps) ImportPath() string {
-	return ""
-}
+func (*TestDeps) ImportPath() string { _ = "STUB: not implemented"; return "" }
 
-func (*TestDeps) ModulePath() string {
-	return ""
-}
+func (*TestDeps) ModulePath() string { _ = "STUB: not implemented"; return "" }
 
-func (*TestDeps) StartTestLog(w io.Writer) {}
+func (*TestDeps) StartTestLog(w io.Writer) { _ = "STUB: not implemented"; return }
 
-func (*TestDeps) StopTestLog() error {
-	return nil
-}
+func (*TestDeps) StopTestLog() error { _ = "STUB: not implemented"; return nil }
 
 func (*TestDeps) CoordinateFuzzing(time.Duration, int64, time.Duration, int64, int, []corpusEntry, []reflect.Type, string, string) error {
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (*TestDeps) RunFuzzWorker(func(corpusEntry) error) error {
+	_ = "STUB: not implemented"
 	return nil
 }
 
 func (*TestDeps) ReadCorpus(string, []reflect.Type) ([]corpusEntry, error) {
+	_ = "STUB: not implemented"
 	return nil, nil
 }
 
-func (*TestDeps) CheckCorpus([]any, []reflect.Type) error {
-	return nil
-}
+func (*TestDeps) CheckCorpus([]any, []reflect.Type) error { _ = "STUB: not implemented"; return nil }
 
-func (*TestDeps) ResetCoverage() {}
+func (*TestDeps) ResetCoverage() { _ = "STUB: not implemented"; return }
 
-func (*TestDeps) SnapshotCoverage() {}
+func (*TestDeps) SnapshotCoverage() { _ = "STUB: not implemented"; return }
 
 func (*TestDeps) InitRuntimeCoverage() (string, func(string, string) (string, error), func() float64) {
+	_ = "STUB: not implemented"
 	return "", nil, nil
 }

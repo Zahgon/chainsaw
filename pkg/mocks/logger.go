@@ -15,11 +15,8 @@ type Logger struct {
 }
 
 func (f *Logger) Log(_ context.Context, operation logging.Operation, status logging.Status, obj client.Object, color *color.Color, args ...fmt.Stringer) {
-	defer func() { f.numCalls++ }()
-	message := fmt.Sprintf("%s: %s - %v", operation, status, args)
-	f.Logs = append(f.Logs, message)
+	_ = "STUB: not implemented"
+	return
 }
 
-func (f *Logger) NumCalls() int {
-	return f.numCalls
-}
+func (f *Logger) NumCalls() int { _ = "STUB: not implemented"; return 0 }

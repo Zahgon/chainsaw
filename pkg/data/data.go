@@ -22,31 +22,20 @@ var configFs embed.FS
 //go:embed schemas
 var schemasFs embed.FS
 
-func _config() (fs.FS, error) {
-	return _sub(configFs, configFolder)
-}
+func _config() (fs.FS, error) { _ = "STUB: not implemented"; return *new(fs.FS), nil }
 
 func _configFile(_fs func() (fs.FS, error)) ([]byte, error) {
-	if _fs == nil {
-		_fs = config
-	}
-	configFs, err := _fs()
-	if err != nil {
-		return nil, err
-	}
-	return fs.ReadFile(configFs, configFile)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func _crds() (fs.FS, error) {
-	return _sub(crdsFs, crdsFolder)
-}
+func _crds() (fs.FS, error) { _ = "STUB: not implemented"; return *new(fs.FS), nil }
 
-func _schemas() (fs.FS, error) {
-	return _sub(schemasFs, schemasFolder)
-}
+func _schemas() (fs.FS, error) { _ = "STUB: not implemented"; return *new(fs.FS), nil }
 
 func _sub(f embed.FS, dir string) (fs.FS, error) {
-	return fs.Sub(f, dir)
+	_ = "STUB: not implemented"
+	return *new(fs.FS), nil
 }
 
 var (

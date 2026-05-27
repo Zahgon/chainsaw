@@ -23,56 +23,51 @@ type FakeClient struct {
 }
 
 func (c *FakeClient) Get(ctx context.Context, key client.ObjectKey, obj client.Object, opts ...client.GetOption) error {
-	defer func() { c.numCalls++ }()
-	return c.GetFn(ctx, c.numCalls, key, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *FakeClient) List(ctx context.Context, list client.ObjectList, opts ...client.ListOption) error {
-	defer func() { c.numCalls++ }()
-	return c.ListFn(ctx, c.numCalls, list, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *FakeClient) Create(ctx context.Context, obj client.Object, opts ...client.CreateOption) error {
-	defer func() { c.numCalls++ }()
-	return c.CreateFn(ctx, c.numCalls, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *FakeClient) Update(ctx context.Context, obj client.Object, opts ...client.UpdateOption) error {
-	defer func() { c.numCalls++ }()
-	return c.UpdateFn(ctx, c.numCalls, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *FakeClient) Delete(ctx context.Context, obj client.Object, opts ...client.DeleteOption) error {
-	defer func() { c.numCalls++ }()
-	return c.DeleteFn(ctx, c.numCalls, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *FakeClient) Patch(ctx context.Context, obj client.Object, patch client.Patch, opts ...client.PatchOption) error {
-	defer func() { c.numCalls++ }()
-	return c.PatchFn(ctx, c.numCalls, obj, patch, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *FakeClient) IsObjectNamespaced(obj runtime.Object) (bool, error) {
-	defer func() { c.numCalls++ }()
-	return c.IsObjectNamespacedFn(c.numCalls, obj)
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (c *FakeClient) RESTMapper() meta.RESTMapper {
-	defer func() { c.numCalls++ }()
-	return c.RESTMapperFn(c.numCalls)
+	_ = "STUB: not implemented"
+	return *new(meta.RESTMapper)
 }
 
 func (c *FakeClient) SubResource(subResource string) client.SubResourceClient {
-	defer func() { c.numCalls++ }()
-	if c.SubResourceFn != nil {
-		return c.SubResourceFn(subResource)
-	}
-	return NewFakeSubResourceWriter()
+	_ = "STUB: not implemented"
+	return *new(client.SubResourceClient)
 }
 
-func (c *FakeClient) NumCalls() int {
-	return c.numCalls
-}
+func (c *FakeClient) NumCalls() int { _ = "STUB: not implemented"; return 0 }
 
 type FakeSubResourceWriter struct {
 	GetFn    func(ctx context.Context, obj client.Object, subResource client.Object, opts ...client.SubResourceGetOption) error
@@ -83,35 +78,28 @@ type FakeSubResourceWriter struct {
 }
 
 func (f *FakeSubResourceWriter) Get(ctx context.Context, obj client.Object, subResource client.Object, opts ...client.SubResourceGetOption) error {
-	return f.GetFn(ctx, obj, subResource, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *FakeSubResourceWriter) Create(ctx context.Context, obj client.Object, subResource client.Object, opts ...client.SubResourceCreateOption) error {
-	return f.CreateFn(ctx, obj, subResource, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *FakeSubResourceWriter) Update(ctx context.Context, obj client.Object, opts ...client.SubResourceUpdateOption) error {
-	return f.UpdateFn(ctx, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *FakeSubResourceWriter) Patch(ctx context.Context, obj client.Object, patch client.Patch, opts ...client.SubResourcePatchOption) error {
-	return f.PatchFn(ctx, obj, patch, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *FakeSubResourceWriter) Apply(ctx context.Context, obj runtime.ApplyConfiguration, opts ...client.SubResourceApplyOption) error {
-	return f.ApplyFn(ctx, obj, opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func NewFakeSubResourceWriter() *FakeSubResourceWriter {
-	return &FakeSubResourceWriter{
-		UpdateFn: func(ctx context.Context, obj client.Object, opts ...client.SubResourceUpdateOption) error {
-			return nil
-		},
-		PatchFn: func(ctx context.Context, obj client.Object, patch client.Patch, opts ...client.SubResourcePatchOption) error {
-			return nil
-		},
-		CreateFn: func(ctx context.Context, obj client.Object, subResource client.Object, opts ...client.SubResourceCreateOption) error {
-			return nil
-		},
-	}
-}
+func NewFakeSubResourceWriter() *FakeSubResourceWriter { _ = "STUB: not implemented"; return nil }

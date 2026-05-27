@@ -1,13 +1,7 @@
 package logging
 
 import (
-	"errors"
 	"fmt"
-	"slices"
-	"strings"
-
-	"go.uber.org/multierr"
-	utilerrors "k8s.io/apimachinery/pkg/util/errors"
 )
 
 type section struct {
@@ -15,28 +9,11 @@ type section struct {
 	args []any
 }
 
-func (s section) String() string {
-	return strings.TrimSpace(s.name + "\n" + fmt.Sprint(s.args...))
-}
+func (s section) String() string { _ = "STUB: not implemented"; return "" }
 
 func Section(name string, args ...any) fmt.Stringer {
-	return section{
-		name: "=== " + strings.ToUpper(name),
-		args: args,
-	}
+	_ = "STUB: not implemented"
+	return *new(fmt.Stringer)
 }
 
-func ErrSection(err error) fmt.Stringer {
-	var errs []string
-	for _, err := range multierr.Errors(err) {
-		if agg, ok := errors.AsType[utilerrors.Aggregate](err); ok {
-			for _, err := range agg.Errors() {
-				errs = append(errs, err.Error())
-			}
-		} else {
-			errs = append(errs, err.Error())
-		}
-	}
-	slices.Sort(errs)
-	return Section("ERROR", strings.Join(errs, "\n"))
-}
+func ErrSection(err error) fmt.Stringer { _ = "STUB: not implemented"; return *new(fmt.Stringer) }

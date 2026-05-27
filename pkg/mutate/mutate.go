@@ -9,5 +9,6 @@ import (
 )
 
 func Mutate(ctx context.Context, compilers compilers.Compilers, path *field.Path, mutation Mutation, value any, bindings apis.Bindings) (any, error) {
-	return mutation.mutate(ctx, compilers, path, value, bindings)
+	_ = "STUB: not implemented"
+	return *new(any), nil
 }

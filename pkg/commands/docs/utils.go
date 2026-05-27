@@ -1,13 +1,5 @@
 package docs
 
-import (
-	"fmt"
-	"path"
-	"path/filepath"
-	"strings"
-	"time"
-)
-
 const fmTemplate = `---
 date: %s
 title: "%s"
@@ -15,21 +7,10 @@ weight: 35
 ---
 `
 
-func websitePrepender(filename string) string {
-	now := time.Now().Format(time.RFC3339)
-	name := filepath.Base(filename)
-	base := strings.TrimSuffix(name, path.Ext(name))
-	return fmt.Sprintf(fmTemplate, now, strings.ReplaceAll(base, "_", " "))
-}
+func websitePrepender(filename string) string { _ = "STUB: not implemented"; return "" }
 
-func websiteLinkHandler(filename string) string {
-	return "../" + strings.TrimSuffix(filename, filepath.Ext(filename))
-}
+func websiteLinkHandler(filename string) string { _ = "STUB: not implemented"; return "" }
 
-func identity(s string) string {
-	return s
-}
+func identity(s string) string { _ = "STUB: not implemented"; return "" }
 
-func empty(s string) string {
-	return ""
-}
+func empty(s string) string { _ = "STUB: not implemented"; return "" }

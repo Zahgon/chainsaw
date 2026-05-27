@@ -11,11 +11,8 @@ type FakeNamespacer struct {
 }
 
 func (n *FakeNamespacer) Apply(client client.Client, obj client.Object) error {
-	defer func() { n.numCalls++ }()
-	return n.ApplyFn(n.numCalls, client, obj)
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (n *FakeNamespacer) GetNamespace() string {
-	defer func() { n.numCalls++ }()
-	return n.GetNamespaceFn(n.numCalls)
-}
+func (n *FakeNamespacer) GetNamespace() string { _ = "STUB: not implemented"; return "" }

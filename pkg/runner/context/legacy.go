@@ -20,57 +20,16 @@ type ContextData struct {
 }
 
 func SetupContext(tc TestContext, data ContextData) (TestContext, error) {
-	if data.BasePath != nil {
-		tc = tc.WithBasePath(*data.BasePath)
-	}
-	if len(data.Catch) > 0 {
-		tc = tc.WithCatch(data.Catch...)
-	}
-	if data.DryRun != nil {
-		tc = tc.WithDryRun(*data.DryRun)
-	}
-	if data.DelayBeforeCleanup != nil {
-		tc = tc.WithDelayBeforeCleanup(&data.DelayBeforeCleanup.Duration)
-	}
-	if data.DeletionPropagation != nil {
-		tc = tc.WithDeletionPropagation(*data.DeletionPropagation)
-	}
-	if data.SkipDelete != nil {
-		tc = tc.WithSkipDelete(*data.SkipDelete)
-	}
-	if data.Templating != nil {
-		tc = tc.WithTemplating(*data.Templating)
-	}
-	if data.TerminationGrace != nil {
-		tc = tc.WithTerminationGrace(&data.TerminationGrace.Duration)
-	}
-	if data.Timeouts != nil {
-		tc = tc.WithTimeouts(*data.Timeouts)
-	}
-	tc = WithClusters(tc, data.Clusters)
-	if data.Cluster != nil {
-		if _tc, err := WithCurrentCluster(tc, *data.Cluster); err != nil {
-			return tc, err
-		} else {
-			tc = _tc
-		}
-	}
-	return tc, nil
+	_ = "STUB: not implemented"
+	return *new(TestContext), nil
 }
 
 func SetupBindings(tc TestContext, bindings ...v1alpha1.Binding) (TestContext, error) {
-	if _tc, err := WithBindings(tc, bindings...); err != nil {
-		return tc, err
-	} else {
-		tc = _tc
-	}
-	return tc, nil
+	_ = "STUB: not implemented"
+	return *new(TestContext), nil
 }
 
 func SetupContextAndBindings(tc TestContext, data ContextData, bindings ...v1alpha1.Binding) (TestContext, error) {
-	if tc, err := SetupContext(tc, data); err != nil {
-		return tc, err
-	} else {
-		return SetupBindings(tc, bindings...)
-	}
+	_ = "STUB: not implemented"
+	return *new(TestContext), nil
 }

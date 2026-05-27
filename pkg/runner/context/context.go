@@ -6,8 +6,6 @@ import (
 	"github.com/kyverno/chainsaw/pkg/apis"
 	"github.com/kyverno/chainsaw/pkg/apis/v1alpha1"
 	"github.com/kyverno/chainsaw/pkg/client"
-	"github.com/kyverno/chainsaw/pkg/client/dryrun"
-	apibindings "github.com/kyverno/chainsaw/pkg/engine/bindings"
 	"github.com/kyverno/chainsaw/pkg/engine/clusters"
 	"github.com/kyverno/chainsaw/pkg/engine/namespacer"
 	"github.com/kyverno/chainsaw/pkg/model"
@@ -49,201 +47,158 @@ type TestContext struct {
 }
 
 func MakeContext(clock clock.PassiveClock, bindings apis.Bindings, registry clusters.Registry) TestContext {
-	return TestContext{
-		Summary: &model.Summary{},
-		Report: &model.Report{
-			Name:      "chainsaw-report",
-			StartTime: clock.Now(),
-		},
-		bindings:            bindings,
-		clusters:            registry,
-		compilers:           apis.DefaultCompilers,
-		deletionPropagation: metav1.DeletePropagationBackground,
-	}
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func EmptyContext(clock clock.PassiveClock) TestContext {
-	return MakeContext(clock, apis.NewBindings(), clusters.NewRegistry(nil))
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc *TestContext) Bindings() apis.Bindings {
-	return tc.bindings
+	_ = "STUB: not implemented"
+	return *new(apis.Bindings)
 }
 
-func (tc *TestContext) BasePath() string {
-	return tc.basePath
-}
+func (tc *TestContext) BasePath() string { _ = "STUB: not implemented"; return "" }
 
-func (tc *TestContext) Catch() []v1alpha1.CatchFinally {
-	return tc.catch
-}
+func (tc *TestContext) Catch() []v1alpha1.CatchFinally { _ = "STUB: not implemented"; return nil }
 
 func (tc *TestContext) Cluster(name string) clusters.Cluster {
-	return tc.clusters.Lookup(name)
+	_ = "STUB: not implemented"
+	return *new(clusters.Cluster)
 }
 
 func (tc *TestContext) Clusters() clusters.Registry {
-	return tc.clusters
+	_ = "STUB: not implemented"
+	return *new(clusters.Registry)
 }
 
 func (tc *TestContext) Compilers() compilers.Compilers {
-	return tc.compilers
+	_ = "STUB: not implemented"
+	return *new(compilers.Compilers)
 }
 
 func (tc *TestContext) CurrentCluster() clusters.Cluster {
-	return tc.cluster
+	_ = "STUB: not implemented"
+	return *new(clusters.Cluster)
 }
 
 func (tc *TestContext) CurrentClusterClient() (*rest.Config, client.Client, error) {
-	config, client, err := tc.clusters.Build(tc.cluster)
-	if err == nil && client != nil && tc.DryRun() {
-		client = dryrun.New(client)
-	}
-	return config, client, err
+	_ = "STUB: not implemented"
+	return nil, *new(client.Client), nil
 }
 
-func (tc *TestContext) DelayBeforeCleanup() *time.Duration {
-	return tc.delayBeforeCleanup
-}
+func (tc *TestContext) DelayBeforeCleanup() *time.Duration { _ = "STUB: not implemented"; return nil }
 
 func (tc *TestContext) DeletionPropagation() metav1.DeletionPropagation {
-	return tc.deletionPropagation
+	_ = "STUB: not implemented"
+	return *new(metav1.DeletionPropagation)
 }
 
-func (tc *TestContext) DryRun() bool {
-	return tc.dryRun
-}
+func (tc *TestContext) DryRun() bool { _ = "STUB: not implemented"; return false }
 
-func (tc *TestContext) FailFast() bool {
-	return tc.failFast
-}
+func (tc *TestContext) FailFast() bool { _ = "STUB: not implemented"; return false }
 
-func (tc *TestContext) FullName() bool {
-	return tc.fullName
-}
+func (tc *TestContext) FullName() bool { _ = "STUB: not implemented"; return false }
 
 func (tc *TestContext) Namespacer() namespacer.Namespacer {
-	return tc.namespacer
+	_ = "STUB: not implemented"
+	return *new(namespacer.Namespacer)
 }
 
-func (tc *TestContext) Quiet() bool {
-	return tc.quiet
-}
+func (tc *TestContext) Quiet() bool { _ = "STUB: not implemented"; return false }
 
-func (tc *TestContext) SkipDelete() bool {
-	return tc.skipDelete
-}
+func (tc *TestContext) SkipDelete() bool { _ = "STUB: not implemented"; return false }
 
-func (tc *TestContext) Templating() bool {
-	return tc.templating
-}
+func (tc *TestContext) Templating() bool { _ = "STUB: not implemented"; return false }
 
-func (tc *TestContext) TerminationGrace() *time.Duration {
-	return tc.terminationGrace
-}
+func (tc *TestContext) TerminationGrace() *time.Duration { _ = "STUB: not implemented"; return nil }
 
-func (tc *TestContext) Timeouts() Timeouts {
-	return tc.timeouts
-}
+func (tc *TestContext) Timeouts() Timeouts { _ = "STUB: not implemented"; return *new(Timeouts) }
 
 func (tc TestContext) WithBasePath(basePath string) TestContext {
-	tc.basePath = basePath
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithBinding(name string, value any) TestContext {
-	tc.bindings = apibindings.RegisterBinding(tc.bindings, name, value)
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithCatch(catch ...v1alpha1.CatchFinally) TestContext {
-	tc.catch = append(tc.catch, catch...)
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithCluster(name string, cluster clusters.Cluster) TestContext {
-	tc.clusters = tc.clusters.Register(name, cluster)
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithCurrentCluster(name string) TestContext {
-	tc.cluster = tc.Cluster(name)
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithDefaultCompiler(name string) TestContext {
-	tc.compilers = tc.compilers.WithDefaultCompiler(name)
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithDelayBeforeCleanup(delayBeforeCleanup *time.Duration) TestContext {
-	tc.delayBeforeCleanup = delayBeforeCleanup
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithDeletionPropagation(deletionPropagation metav1.DeletionPropagation) TestContext {
-	tc.deletionPropagation = deletionPropagation
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithDryRun(dryRun bool) TestContext {
-	tc.dryRun = dryRun
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithFailFast(failFast bool) TestContext {
-	tc.failFast = failFast
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithFullName(fullName bool) TestContext {
-	tc.fullName = fullName
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithNamespacer(namespacer namespacer.Namespacer) TestContext {
-	tc.namespacer = namespacer
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithQuiet(quiet bool) TestContext {
-	tc.quiet = quiet
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithSkipDelete(skipDelete bool) TestContext {
-	tc.skipDelete = skipDelete
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithTemplating(templating bool) TestContext {
-	tc.templating = templating
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithTerminationGrace(terminationGrace *time.Duration) TestContext {
-	tc.terminationGrace = terminationGrace
-	return tc
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }
 
 func (tc TestContext) WithTimeouts(timeouts v1alpha1.Timeouts) TestContext {
-	if new := timeouts.Apply; new != nil {
-		tc.timeouts.Apply = new.Duration
-	}
-	if new := timeouts.Assert; new != nil {
-		tc.timeouts.Assert = new.Duration
-	}
-	if new := timeouts.Cleanup; new != nil {
-		tc.timeouts.Cleanup = new.Duration
-	}
-	if new := timeouts.Delete; new != nil {
-		tc.timeouts.Delete = new.Duration
-	}
-	if new := timeouts.Error; new != nil {
-		tc.timeouts.Error = new.Duration
-	}
-	if new := timeouts.Exec; new != nil {
-		tc.timeouts.Exec = new.Duration
-	}
-	return tc.WithBinding("timeouts", tc.timeouts)
+	_ = "STUB: not implemented"
+	return *new(TestContext)
 }

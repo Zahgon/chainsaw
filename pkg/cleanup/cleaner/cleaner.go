@@ -6,7 +6,6 @@ import (
 
 	"github.com/kyverno/chainsaw/pkg/client"
 	"github.com/kyverno/chainsaw/pkg/model"
-	kerrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -26,12 +25,8 @@ type Cleaner interface {
 }
 
 func New(timeout time.Duration, waitForDeletion bool, delay *time.Duration, propagation metav1.DeletionPropagation) Cleaner {
-	return &cleaner{
-		delay:           delay,
-		timeout:         timeout,
-		propagation:     propagation,
-		waitForDeletion: waitForDeletion,
-	}
+	_ = "STUB: not implemented"
+	return *new(Cleaner)
 }
 
 type cleaner struct {
@@ -43,51 +38,18 @@ type cleaner struct {
 }
 
 func (c *cleaner) Add(client client.Client, object client.Object) {
-	c.entries = append(c.entries, cleanupEntry{
-		client: client,
-		object: object,
-	})
+	_ = "STUB: not implemented"
+	return
 }
 
-func (c *cleaner) Empty() bool {
-	return len(c.entries) == 0
-}
+func (c *cleaner) Empty() bool { _ = "STUB: not implemented"; return false }
 
 func (c *cleaner) Run(ctx context.Context, stepReport *model.StepReport) []error {
-	if c.delay != nil {
-		time.Sleep(*c.delay)
-	}
-	var errs []error
-	for i := len(c.entries) - 1; i >= 0; i-- {
-		report := model.OperationReport{
-			Type:      model.OperationTypeDelete,
-			StartTime: time.Now(),
-		}
-		if report.Err = c.delete(ctx, c.entries[i]); report.Err != nil {
-			errs = append(errs, report.Err)
-		}
-		report.EndTime = time.Now()
-		if stepReport != nil {
-			stepReport.Add(&report)
-		}
-	}
-	return errs
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *cleaner) delete(ctx context.Context, entry cleanupEntry) error {
-	if c.timeout != 0 {
-		_ctx, cancel := context.WithTimeout(ctx, c.timeout)
-		defer cancel()
-		ctx = _ctx
-	}
-	if err := entry.client.Delete(ctx, entry.object, client.PropagationPolicy(c.propagation)); err != nil {
-		if !kerrors.IsNotFound(err) {
-			return err
-		}
-	} else if c.waitForDeletion {
-		if err := client.WaitForDeletion(ctx, entry.client, entry.object); err != nil {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }

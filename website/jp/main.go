@@ -3,8 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"os"
-	"strings"
 
 	jpfunctions "github.com/jmespath-community/go-jmespath/pkg/functions"
 	chainsawfunctions "github.com/kyverno/chainsaw/pkg/engine/functions"
@@ -42,43 +40,6 @@ func main() {
 	fmt.Println()
 }
 
-func printFunctions(funcs ...jpfunctions.FunctionEntry) {
-	fmt.Println("| Name | Description |")
-	fmt.Println("|---|---|")
-	for _, function := range funcs {
-		sig := functionString(function)
-		desc := function.Description
-		desc = strings.TrimSpace(desc)
-		if desc != "" {
-			desc = strings.ToUpper(desc[:1]) + desc[1:]
-			desc = strings.TrimSuffix(desc, ".")
-			desc = desc + "."
-		}
-		fmt.Println("|", fmt.Sprintf("[%s](./examples/%s.md)", function.Name, function.Name), "|", desc, "|")
-		data := fmt.Sprintf("# %s\n\n## Signature\n\n`%s`\n\n## Description\n\n%s\n\n## Examples\n\n", function.Name, sig, desc)
-		if e, err := examples.ReadFile(fmt.Sprintf("examples/%s.md", function.Name)); err != nil {
-			panic(err)
-		} else {
-			data += string(e)
-		}
-		if err := os.WriteFile(fmt.Sprintf("./website/docs/reference/jp/examples/%s.md", function.Name), []byte(data), 0o600); err != nil {
-			panic(err)
-		}
-	}
-}
+func printFunctions(funcs ...jpfunctions.FunctionEntry) { _ = "STUB: not implemented"; return }
 
-func functionString(f jpfunctions.FunctionEntry) string {
-	if f.Name == "" {
-		return ""
-	}
-	var args []string
-	for _, a := range f.Arguments {
-		var aTypes []string
-		for _, t := range a.Types {
-			aTypes = append(aTypes, string(t))
-		}
-		args = append(args, strings.Join(aTypes, "|"))
-	}
-	output := fmt.Sprintf("%s(%s)", f.Name, strings.Join(args, ", "))
-	return output
-}
+func functionString(f jpfunctions.FunctionEntry) string { _ = "STUB: not implemented"; return "" }

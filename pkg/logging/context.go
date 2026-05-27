@@ -10,27 +10,15 @@ type (
 )
 
 func WithSink(ctx context.Context, sink Sink) context.Context {
-	return context.WithValue(ctx, sinkKey{}, sink)
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
-func getSink(ctx context.Context) Sink {
-	if ctx != nil {
-		if v, ok := ctx.Value(sinkKey{}).(Sink); ok {
-			return v
-		}
-	}
-	return nil
-}
+func getSink(ctx context.Context) Sink { _ = "STUB: not implemented"; return *new(Sink) }
 
 func WithLogger(ctx context.Context, logger Logger) context.Context {
-	return context.WithValue(ctx, loggerKey{}, logger)
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
-func getLogger(ctx context.Context) Logger {
-	if ctx != nil {
-		if v, ok := ctx.Value(loggerKey{}).(Logger); ok {
-			return v
-		}
-	}
-	return nil
-}
+func getLogger(ctx context.Context) Logger { _ = "STUB: not implemented"; return *new(Logger) }

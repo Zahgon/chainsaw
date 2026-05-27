@@ -6,8 +6,6 @@ import (
 )
 
 func ApplyNamespacer(namespacer namespacer.Namespacer, client client.Client, obj client.Object) error {
-	if namespacer == nil {
-		return nil
-	}
-	return namespacer.Apply(client, obj)
+	_ = "STUB: not implemented"
+	return nil
 }

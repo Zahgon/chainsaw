@@ -15,53 +15,19 @@ var BuildVersion string
 
 type buildInfoReader = func() (*debug.BuildInfo, bool)
 
-func Version() string {
-	return version(debug.ReadBuildInfo)
-}
+func Version() string { _ = "STUB: not implemented"; return "" }
 
-func version(reader buildInfoReader) string {
-	if BuildVersion == "" {
-		bi, ok := reader()
-		if !ok {
-			return notFound
-		}
-		if bi.Main.Version == "" {
-			return notFound
-		}
-		BuildVersion = bi.Main.Version
-	}
-	return BuildVersion
-}
+func version(reader buildInfoReader) string { _ = "STUB: not implemented"; return "" }
 
-func Time() string {
-	return time(debug.ReadBuildInfo)
-}
+func Time() string { _ = "STUB: not implemented"; return "" }
 
-func time(reader buildInfoReader) string {
-	bi, ok := reader()
-	if !ok {
-		return notFound
-	}
-	return tryFindSetting(vcsTime, bi.Settings...)
-}
+func time(reader buildInfoReader) string { _ = "STUB: not implemented"; return "" }
 
-func Hash() string {
-	return hash(debug.ReadBuildInfo)
-}
+func Hash() string { _ = "STUB: not implemented"; return "" }
 
-func hash(reader buildInfoReader) string {
-	bi, ok := reader()
-	if !ok {
-		return notFound
-	}
-	return tryFindSetting(vcsRevision, bi.Settings...)
-}
+func hash(reader buildInfoReader) string { _ = "STUB: not implemented"; return "" }
 
 func tryFindSetting(key string, settings ...debug.BuildSetting) string {
-	for _, setting := range settings {
-		if setting.Key == key {
-			return setting.Value
-		}
-	}
-	return notFound
+	_ = "STUB: not implemented"
+	return ""
 }
